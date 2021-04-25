@@ -3,8 +3,10 @@ Simple Portal Features implemented with examples, based on a microservice archit
 
 ### Technologies
 * Quarkus
-* Kafka
-* MongoDB
 * VueJS
-* Vault
 * Maven
+* NPM
+#### Middleware
+* Kafka
+* DB?
+* Vault
