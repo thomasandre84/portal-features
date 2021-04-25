@@ -1,19 +1,17 @@
-package org.example.util;
+/*package org.example.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class KafkaHeaderUtilTest {
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @Test
     void getTargetPartition() {
+
     }
 
     @Test
     void getHeaderId() {
+
     }
 
     @Test
@@ -31,4 +29,4 @@ class KafkaHeaderUtilTest {
     @Test
     void genResponseOutgoingKafkaRecordMetadata() {
     }
-}
+}*/
