@@ -48,9 +48,12 @@ public class KafkaHeaderUtil {
     }
 
     public static Boolean equalId(String initId, Optional<String> receivedId) {
-        String recId = receivedId.get();
-        log.info("Init Id {}  with received Id: {}", initId, recId);
-        return initId.equals(recId);
+        if (receivedId.isPresent()) {
+            String recId = receivedId.get();
+            log.info("Init Id {}  with received Id: {}", initId, recId);
+            return initId.equals(recId);
+        }
+        return false;
     }
 
     public static BigInteger getReplyTargetPartition(List<TopicPartition> partitionList) {
