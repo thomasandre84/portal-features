@@ -25,3 +25,20 @@ services:
       KAFKA_RESTART_ATTEMPTS: "10"
       KAFKA_RESTART_DELAY: "5"
       ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL: "0"
+  vault:
+    image: vault:1.6.0
+    ports:
+      - "8200:8200"
+    cap_add:
+      - IPC_LOCK
+    environment:
+      VAULT_ADDR: "http://localhost:8200"
+  mysql:
+    image: mysql:8
+    ports:
+      - "3600:3600"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root4Dev"
+      MYSQL_DATABASE: "portal"
+      MYSQL_USER: "portal"
+      MYSQL_PASSWORD: "portal4Dev"
