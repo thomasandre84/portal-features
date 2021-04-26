@@ -1,0 +1,29 @@
+quarkus:
+  datasource:
+    db-kind: mysql
+    jdbc:
+      url: jdbc:mysql://localhost:3306/portal?useSSL=false
+      enable-metrics: true
+    username: portal
+    password: portal4Dev
+    health:
+      enabled: true
+  hibernate-orm:
+    database:
+      generation: none
+    log:
+      sql: true
+    sql-load-scripts: no-file
+  quartz:
+    clustered: true
+    store-type: jdbc-cmt
+    plugins:
+      jobHistory:
+        class: org.quartz.plugins.history.LoggingJobHistoryPlugin
+        properties:
+          jobSuccessMessage: "Job [{1}.{0}] execution complete and reports: {8}"
+  liquibase:
+    migrate-at-start: true
+  log:
+    console:
+      json: false

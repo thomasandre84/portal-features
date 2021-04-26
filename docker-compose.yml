@@ -36,9 +36,22 @@ services:
   mysql:
     image: mysql:8
     ports:
-      - "3600:3600"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "root4Dev"
       MYSQL_DATABASE: "portal"
       MYSQL_USER: "portal"
       MYSQL_PASSWORD: "portal4Dev"
+  greenmail:
+    image: greenmail/standalone:1.6.3
+    ports:
+      - "3025:3025"
+      - "3110:3110"
+      - "3143:3143"
+      - "3465:3465"
+      - "3993:3993"
+      - "3995:3995"
+      - "8085:8080"
+    environment:
+      GREENMAIL_OPTS: "-Dgreenmail.setup.test.all -Dgreenmail.hostname=0.0.0.0 -Dgreenmail.auth.disabled -Dgreenmail.verbose"
+      JAVA_OPTS: "-Djava.net.preferIPv4Stack=true -Xmx512m"
