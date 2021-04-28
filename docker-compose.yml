@@ -34,7 +34,7 @@ services:
     environment:
       VAULT_ADDR: "http://localhost:8200"
   mysql:
-    image: mysql:8
+    image: mysql:8.0
     ports:
       - "3306:3306"
     environment:
