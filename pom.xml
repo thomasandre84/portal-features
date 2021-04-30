@@ -45,8 +45,9 @@
     <module>portal-sync-jobs</module>
     <module>portal-distribution</module>
     <module>portal-subscription</module>
-    <module>portal-admin-ui</module>
-    <module>portal-client-ui</module>
+    <module>portal-admin-rest</module>
+    <module>portal-client-rest</module>
+    <module>portal-ui</module>
   </modules>
 
   <dependencies>

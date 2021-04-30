@@ -11,5 +11,9 @@ Simple Portal Features implemented with examples, based on a microservice archit
 * NPM
 #### Middleware
 * Kafka
-* DB?
+* MySQL
 * Vault
+* NGinx
+
+### Testing
+* GreenMail 

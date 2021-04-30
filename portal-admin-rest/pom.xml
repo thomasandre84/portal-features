@@ -8,12 +8,11 @@
         <artifactId>portal-parent-pom</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <packaging>pom</packaging>
-    <artifactId>portal-admin-ui-parent</artifactId>
-    <description>The UI with Admin Functionality</description>
+    <packaging>jar</packaging>
+    <artifactId>portal-admin-rest</artifactId>
+    <description>The REST API for Admin activities</description>
 
-    <modules>
-        <module>frontend</module>
-        <module>backend</module>
-    </modules>
+    <build>
+
+    </build>
 </project>
