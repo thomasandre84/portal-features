@@ -7,3 +7,18 @@ quarkus:
     username: test
     password: test
     mock: false
+  datasource:
+    db-kind: mysql
+    jdbc:
+      url: jdbc:mysql://localhost:3306/portal?ServerTimezone=UTC
+      enable-metrics: true
+    username: portal
+    password: portal4Dev
+    health:
+      enabled: true
+  hibernate-orm:
+    database:
+      generation: none
+    log:
+      sql: true
+    sql-load-scripts: no-file

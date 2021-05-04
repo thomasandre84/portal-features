@@ -11,6 +11,7 @@ public class SmtpResource {
 
     @Inject
     SmtpService smtpService;
+
     @GET
     public void sendEmail(){
         smtpService.sendSimpleEmail();

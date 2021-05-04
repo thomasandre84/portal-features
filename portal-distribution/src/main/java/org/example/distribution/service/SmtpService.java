@@ -18,7 +18,7 @@ public class SmtpService {
     Mailer mailer;
 
     public void sendSimpleEmail(){
-        mailer.send(Mail.withText("test.@test.org", "A simple test", "with a body"));
+        mailer.send(Mail.withText("test2@test.org", "A simple test", "with a body"));
         log.info("Email sent");
     }
 }

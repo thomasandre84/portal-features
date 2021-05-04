@@ -2,7 +2,7 @@ quarkus:
   datasource:
     db-kind: mysql
     jdbc:
-      url: jdbc:mysql://localhost:3306/portal?useSSL=false
+      url: jdbc:mysql://localhost:3306/portal?ServerTimezone=UTC
       enable-metrics: true
     username: portal
     password: portal4Dev
