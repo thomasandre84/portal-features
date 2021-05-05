@@ -14,6 +14,8 @@ quarkus:
     log:
       sql: true
     sql-load-scripts: no-file
+  http:
+    test-port: 18084
 
 # Configure the SmallRye Kafka connector
 kafka:

@@ -4,8 +4,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-@Path(RuntimeConfigResource.BASE_URL)
-public class RuntimeConfigResource {
+@Path(ClientRuntimeConfigResource.BASE_URL)
+public class ClientRuntimeConfigResource {
 
     static final String BASE_URL = "/config";
 
