@@ -1,12 +1,6 @@
 quarkus:
-  mailer:
-    from: test@test.org
-    host: localhost
-    port: 3025
-    ssl: false
-    username: test
-    password: test
-    mock: false
+  application:
+    name: sync-jobs
   datasource:
     db-kind: mysql
     jdbc:
@@ -27,3 +21,4 @@ quarkus:
 kafka:
   bootstrap:
     servers: localhost:9092
+

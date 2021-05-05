@@ -8,9 +8,8 @@
         <artifactId>portal-parent-pom</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <packaging>jar</packaging>
     <artifactId>portal-ui</artifactId>
-    <description>The UI</description>
+    <description>The UI built with a JS Framework</description>
 
     <build>
 

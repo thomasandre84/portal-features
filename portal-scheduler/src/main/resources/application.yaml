@@ -27,3 +27,8 @@ quarkus:
   log:
     console:
       json: false
+
+# Configure the SmallRye Kafka connector
+kafka:
+  bootstrap:
+    servers: localhost:9092

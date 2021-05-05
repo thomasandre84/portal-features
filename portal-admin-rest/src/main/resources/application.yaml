@@ -1,12 +1,4 @@
 quarkus:
-  mailer:
-    from: test@test.org
-    host: localhost
-    port: 3025
-    ssl: false
-    username: test
-    password: test
-    mock: false
   datasource:
     db-kind: mysql
     jdbc:
