@@ -1,11 +1,14 @@
 package org.example.util;
 
+import io.jaegertracing.internal.JaegerSpanContext;
 import io.smallrye.reactive.messaging.kafka.IncomingKafkaRecordMetadata;
 import io.smallrye.reactive.messaging.kafka.OutgoingKafkaRecordMetadata;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.header.internals.RecordHeader;
+import org.eclipse.microprofile.reactive.messaging.Message;
+import org.eclipse.microprofile.reactive.messaging.Metadata;
 
 import java.math.BigInteger;
 import java.util.*;
@@ -74,6 +77,14 @@ public class KafkaHeaderUtil {
                 .build();
     }
 
+    public static OutgoingKafkaRecordMetadata<String> genRequestOutgoingKafkaRecordMetadata(String id){
+        RecordHeader headerId = new RecordHeader(ID, id.getBytes());
+
+        return OutgoingKafkaRecordMetadata.<String>builder()
+                .withHeaders(Collections.singletonList(headerId))
+                .build();
+    }
+
     public static OutgoingKafkaRecordMetadata<String> genResponseOutgoingKafkaRecordMetadata(Integer targetPartition, String id){
         RecordHeader headerId = new RecordHeader(ID, id.getBytes());
         return OutgoingKafkaRecordMetadata.<String>builder()
@@ -82,10 +93,16 @@ public class KafkaHeaderUtil {
                 .build();
     }
 
-    /*public static String getUberTraceId(JaegerSpanContext spanCtx) {
+    public static String getUberTraceId(JaegerSpanContext spanCtx) {
         return spanCtx.getTraceId() + ":" +
                 Long.toHexString(spanCtx.getSpanId()) + ":" +
                 Long.toHexString(spanCtx.getParentId()) + ":" +
                 Integer.toHexString(spanCtx.getFlags());
-    }*/
+    }
+
+    public static Message<String> getMessage(String traceId, String content) {
+        OutgoingKafkaRecordMetadata<String> customHeader = KafkaHeaderUtil.genRequestOutgoingKafkaRecordMetadata(traceId);
+        Metadata metadata = Metadata.of(customHeader);
+        return Message.of(content, metadata);
+    }
 }

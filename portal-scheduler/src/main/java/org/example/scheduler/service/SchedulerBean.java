@@ -3,16 +3,15 @@ package org.example.scheduler.service;
 import io.quarkus.runtime.Startup;
 
 import lombok.extern.slf4j.Slf4j;
-import org.quartz.JobKey;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.TriggerKey;
+import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.quartz.impl.matchers.GroupMatcher;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 
 @Startup
 @Singleton
@@ -20,6 +19,7 @@ import javax.inject.Singleton;
 public class SchedulerBean {
 
 
+    //@Inject
     private Scheduler scheduler;
 
     @PostConstruct
@@ -46,6 +46,19 @@ public class SchedulerBean {
             }
         }
     }
+
+    public List<String> getJobGroupNames() throws SchedulerException {
+        return scheduler.getJobGroupNames();
+    }
+
+    public List<String> getTriggerGroupNames() throws SchedulerException {
+        return scheduler.getTriggerGroupNames();
+    }
+
+    public void addJob(JobDetail detail) throws SchedulerException {
+        scheduler.addJob(detail, true);
+    }
+
 
     @PreDestroy
     public void stopJobs() {
