@@ -19,14 +19,14 @@ import java.util.List;
 public class SchedulerBean {
 
 
-    //@Inject
-    private Scheduler scheduler;
+    @Inject
+    Scheduler scheduler;
 
     @PostConstruct
     public void scheduleJobs() {
         try {
-            scheduler = new StdSchedulerFactory().getScheduler();
-            scheduler.start();
+            //scheduler = new StdSchedulerFactory().getScheduler();
+            //scheduler.start();
             printJobsAndTriggers(scheduler);
         } catch (SchedulerException e) {
             log.error("Error while creating scheduler", e);

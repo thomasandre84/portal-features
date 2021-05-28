@@ -16,7 +16,7 @@ quarkus:
     sql-load-scripts: no-file
   quartz:
     clustered: true
-    store-type: jdbc-cmt
+    store-type: JDBC_CMT
     plugins:
       jobHistory:
         class: org.quartz.plugins.history.LoggingJobHistoryPlugin
@@ -28,7 +28,10 @@ quarkus:
     console:
       json: false
       format: '%d{YYYY-MM-dd HH:mm:ss} %-5p traceId=%X{traceId}, parentId=%X{parentId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n'
-
+#org:
+#  quartz:
+#    jobStore:
+#      class: org.quartz.impl.jdbcjobstore.JobStoreCMT
 # Configure the SmallRye Kafka connector
 mp:
   messaging:

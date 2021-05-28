@@ -1,5 +1,7 @@
 package org.example.scheduler.service;
 
+import io.quarkus.scheduler.Scheduled;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.quartz.impl.JobDetailImpl;
 
@@ -8,6 +10,7 @@ import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @ApplicationScoped
 public class JobStoreService {
 
@@ -30,5 +33,10 @@ public class JobStoreService {
                 .build();
         //jobStore.storeJob(jobDetail, true);
         schedulerBean.addJob(jobDetail);
+    }
+
+    @Scheduled(every = "10s", identity = "log-alive")
+    void logAlive() {
+        log.info("I'm alive");
     }
 }
