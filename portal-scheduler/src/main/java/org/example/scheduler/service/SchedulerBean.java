@@ -59,6 +59,9 @@ public class SchedulerBean {
         scheduler.addJob(detail, true);
     }
 
+    public void addTrigger(Trigger trigger) {
+    }
+
 
     @PreDestroy
     public void stopJobs() {
