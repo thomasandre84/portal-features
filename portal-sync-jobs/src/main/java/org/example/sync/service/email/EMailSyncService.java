@@ -39,8 +39,6 @@ public class EMailSyncService {
                         throwable -> log.warn("Failed to save Email {}", throwable),
                         () ->log.info("Fetching Emails Completed")
                 );
-
-
     }
 
 

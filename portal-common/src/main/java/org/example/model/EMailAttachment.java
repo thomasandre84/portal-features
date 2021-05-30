@@ -12,6 +12,11 @@ public class EMailAttachment {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
+    private String fileName;
+
     @Lob
     private byte[] attachment;
+
+    @ManyToOne
+    private EMail email;
 }

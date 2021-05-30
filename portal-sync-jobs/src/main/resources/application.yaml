@@ -16,6 +16,11 @@ quarkus:
     log:
       sql: true
     sql-load-scripts: no-file
+  liquibase:
+    migrate-at-start: true
+  log:
+    console:
+      json: false
 
 # Configure the SmallRye Kafka connector
 kafka:

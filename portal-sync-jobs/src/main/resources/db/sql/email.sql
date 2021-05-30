@@ -1,0 +1,36 @@
+--liquibase formatted sql
+--changeset thomas:email
+CREATE TABLE EMailConfiguration(
+id BIGINT NOT NULL AUTO_INCREMENT,
+name VARCHAR(200) NOT NULL,
+host VARCHAR(200) NOT NULL,
+port MEDIUMINT NOT NULL,
+username VARCHAR(250) NULL,
+password VARCHAR(250) NULL,
+protocol VARCHAR(250) NOT NULL,
+PRIMARY KEY (id))
+ENGINE=InnoDB;
+
+CREATE TABLE EMail (
+id BIGINT NOT NULL AUTO_INCREMENT,
+message_id VARCHAR(500) NOT NULL,
+`from` VARCHAR(200) NOT NULL,
+`to` VARCHAR(200) NOT NULL,
+subject VARCHAR(250) NOT NULL,
+body MEDIUMTEXT NULL,
+PRIMARY KEY (id))
+ENGINE=InnoDB;
+
+CREATE TABLE EMailAttachment (
+id BIGINT NOT NULL AUTO_INCREMENT,
+file_name VARCHAR(200) NOT NULL,
+attachment MEDIUMBLOB NULL,
+email BIGINT NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (email)
+REFERENCES EMail(id))
+ENGINE=InnoDB;
+
+--rollback DROP TABLE IF EXISTS EMailAttachment;
+--rollback DROP TABLE IF EXISTS EMail;
+--rollback DROP TABLE IF EXISTS EMailConfiguration;
