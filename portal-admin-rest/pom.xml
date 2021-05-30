@@ -12,6 +12,13 @@
     <artifactId>portal-admin-rest</artifactId>
     <description>The REST API for Admin activities</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>portal-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
     <build>
 
     </build>

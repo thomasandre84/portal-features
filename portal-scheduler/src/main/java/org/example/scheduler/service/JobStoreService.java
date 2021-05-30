@@ -2,10 +2,10 @@ package org.example.scheduler.service;
 
 import io.quarkus.scheduler.Scheduled;
 import lombok.extern.slf4j.Slf4j;
+
 import org.eclipse.microprofile.opentracing.Traced;
 import org.example.scheduler.job.SimpleJob;
 import org.quartz.*;
-import org.quartz.impl.JobDetailImpl;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

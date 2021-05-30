@@ -8,19 +8,20 @@ import jakarta.mail.NoSuchProviderException;
 import jakarta.mail.Session;
 import jakarta.mail.Store;
 import lombok.extern.slf4j.Slf4j;
+import org.example.model.EMailConfiguration;
 
 import javax.enterprise.context.ApplicationScoped;
 
 
 @Slf4j
 @ApplicationScoped
-public class EmailGateway {
+public class EMailGateway {
     static final String INBOX = "INBOX";
 
-    public Message[] receive(AccountConfiguration account) {
+    public Message[] receive(EMailConfiguration account) {
         final Properties props = setupPropertiesForAccount(account);
         final Session emailSession = Session.getInstance(props);
-        final Store store = getStore(emailSession, account.protocol().name());
+        final Store store = getStore(emailSession, account.getProtocol().name());
 
         connectToStore(account, store);
 
@@ -76,12 +77,12 @@ public class EmailGateway {
      * @param account
      * @param store
      */
-    private void connectToStore(AccountConfiguration account,
+    private void connectToStore(EMailConfiguration account,
                                 final Store store) {
         try {
-            store.connect(account.host(),
-                    account.username(),
-                    account.password());
+            store.connect(account.getHost(),
+                    account.getUsername(),
+                    account.getPassword());
         } catch (final MessagingException e) {
             throw new RuntimeException(e);
         }
@@ -94,16 +95,16 @@ public class EmailGateway {
      * @param account
      * @return
      */
-    private Properties setupPropertiesForAccount(AccountConfiguration account) {
+    private Properties setupPropertiesForAccount(EMailConfiguration account) {
         final Properties props = new Properties();
         props.setProperty("mail.pop3.host",
-                account.host());
+                account.getHost());
         props.setProperty("mail.pop3.port",
-                account.port().toString());
+                account.getPort().toString());
         props.setProperty("mail.user",
-                account.username());
+                account.getUsername());
         props.setProperty("mail.password",
-                account.password());
+                account.getPassword());
         return props;
     }
 

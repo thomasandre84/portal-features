@@ -1,6 +1,7 @@
 package org.example.util;
 
 import io.jaegertracing.internal.JaegerSpanContext;
+import io.opentelemetry.api.trace.SpanContext;
 import io.smallrye.reactive.messaging.kafka.IncomingKafkaRecordMetadata;
 import io.smallrye.reactive.messaging.kafka.OutgoingKafkaRecordMetadata;
 import lombok.extern.slf4j.Slf4j;
@@ -99,6 +100,13 @@ public class KafkaHeaderUtil {
                 Long.toHexString(spanCtx.getParentId()) + ":" +
                 Integer.toHexString(spanCtx.getFlags());
     }
+
+    /*public static String getUberTraceId(SpanContext spanCtx) {
+        return spanCtx.getTraceId() + ":" +
+                spanCtx.getSpanId() + ":" +
+                spanCtx.getTraceState() + ":" +
+                spanCtx.getTraceFlags();
+    }*/
 
     public static Message<String> getMessage(String traceId, String content) {
         OutgoingKafkaRecordMetadata<String> customHeader = KafkaHeaderUtil.genRequestOutgoingKafkaRecordMetadata(traceId);
