@@ -22,8 +22,18 @@ quarkus:
     log:
       sql: true
     sql-load-scripts: no-file
+  liquibase:
+    migrate-at-start: true
 
 # Configure the SmallRye Kafka connector
-kafka:
-  bootstrap:
-    servers: localhost:9092
+mp:
+  messaging:
+    incoming:
+      email-in:
+        connector: smallrye-kafka
+        bootstrap:
+          servers: localhost:9092
+        topic: email
+        value:
+          serializer: io.vertx.kafka.client.serialization.JsonObjectDeserializer
+        failure-strategy: dead-letter-queue
