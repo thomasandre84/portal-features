@@ -16,7 +16,7 @@ import java.util.List;
 
 @Slf4j
 @ApplicationScoped
-public class EMailSyncService {
+public final class EMailSyncService {
 
     @Inject
     EMailConfigRepository eMailConfigRepository;
@@ -54,12 +54,13 @@ public class EMailSyncService {
             final String id = header[0];
 
             final String from = "" + message.getFrom()[0].toString();
-            final String to = message.getAllRecipients()[0].toString();
+            final String to = Arrays.toString(message.getAllRecipients());
+            final String receivers = to.length() > 1000 ? to.substring(1000) : to;
             final String subject = message.getSubject();
             final String body = message.getContent().toString();
 
             final EMail email = EMail.builder()
-                    .messageId(id).from(from).to(to).subject(subject).body(body).build();
+                    .messageId(id).sender(from).receivers(receivers).subject(subject).body(body).build();
 
             return email;
         } catch (final MessagingException | IOException e) {

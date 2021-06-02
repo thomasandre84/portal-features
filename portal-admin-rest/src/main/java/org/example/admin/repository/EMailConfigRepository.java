@@ -6,5 +6,5 @@ import org.example.model.EMailConfiguration;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class EMailConfigRepository implements PanacheRepositoryBase<EMailConfiguration, Long> {
+public final class EMailConfigRepository implements PanacheRepositoryBase<EMailConfiguration, Long> {
 }

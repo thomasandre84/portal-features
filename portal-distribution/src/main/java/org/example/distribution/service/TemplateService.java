@@ -14,7 +14,7 @@ import javax.inject.Inject;
  */
 @Slf4j
 @ApplicationScoped
-public class TemplateService {
+public final class TemplateService {
     @Inject
     Engine engine;
 

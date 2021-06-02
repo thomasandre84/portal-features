@@ -19,8 +19,10 @@ public class EMail {
     private Long id;
 
     private String messageId;
-    private String from;
-    private String to;
+    private String sender;
+
+    @Column(columnDefinition = "TEXT")
+    private String receivers;
     private String subject;
     private String body;
 

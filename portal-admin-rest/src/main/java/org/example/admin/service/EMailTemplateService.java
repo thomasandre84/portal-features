@@ -2,7 +2,7 @@ package org.example.admin.service;
 
 import io.smallrye.mutiny.Uni;
 import lombok.extern.slf4j.Slf4j;
-import org.example.admin.dto.EMailTemplateDto;
+import org.example.admin.dto.rest.EMailTemplateDto;
 import org.example.admin.repository.ActiveEMailTemplateRepository;
 import org.example.admin.repository.EMailTemplateRepository;
 import org.example.model.EMailTemplate;

@@ -17,7 +17,20 @@ quarkus:
   http:
     test-port: 18084
 
+"%dev":
+   quarkus:
+     http:
+       port: 8081
+
 # Configure the SmallRye Kafka connector
-kafka:
-  bootstrap:
-    servers: localhost:9092
+mp:
+  messaging:
+    outgoing:
+      command-out:
+        connector: smallrye-kafka
+        bootstrap:
+          servers: localhost:9092
+        topic: command
+        value:
+          serializer: io.vertx.kafka.client.serialization.JsonObjectSerializer
+

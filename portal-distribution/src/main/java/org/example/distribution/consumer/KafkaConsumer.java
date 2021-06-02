@@ -9,7 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import java.util.concurrent.CompletionStage;
 
 @ApplicationScoped
-public class KafkaConsumer {
+public final class KafkaConsumer {
 
     @Incoming("email-in")
     @Traced

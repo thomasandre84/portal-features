@@ -6,5 +6,5 @@ import org.example.model.ActiveEMailTemplate;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class ActiveEMailTemplateRepository implements PanacheRepositoryBase<ActiveEMailTemplate, String> {
+public final class ActiveEMailTemplateRepository implements PanacheRepositoryBase<ActiveEMailTemplate, String> {
 }

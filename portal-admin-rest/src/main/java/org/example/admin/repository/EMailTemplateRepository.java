@@ -6,7 +6,7 @@ import org.example.model.EMailTemplate;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class EMailTemplateRepository implements PanacheRepositoryBase<EMailTemplate, EMailTemplate.EMailTemplateId> {
+public final class EMailTemplateRepository implements PanacheRepositoryBase<EMailTemplate, EMailTemplate.EMailTemplateId> {
     public Long getMaxVersion(String name){
         return (Long) getEntityManager()
                 .createNativeQuery("SELECT MAX(e.version) FROM EMailTemplate e WHERE e.name = :name", Long.class)

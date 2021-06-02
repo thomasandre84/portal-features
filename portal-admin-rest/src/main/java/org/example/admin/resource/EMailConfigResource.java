@@ -4,13 +4,17 @@ import org.example.admin.service.EMailConfigService;
 import org.example.model.EMailConfiguration;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/emails")
-public class EMailConfigResource {
+import static org.example.admin.resource.EMailConfigResource.BASE_URL;
+
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+@Path(BASE_URL)
+public final class EMailConfigResource {
+    static final String BASE_URL = "/emails";
 
     @Inject
     EMailConfigService eMailConfigService;

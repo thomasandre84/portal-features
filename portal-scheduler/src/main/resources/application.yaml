@@ -42,4 +42,4 @@ mp:
           servers: localhost:9092
         topic: sync
         value:
-          serializer: org.apache.kafka.common.serialization.StringSerializer
+          serializer: io.vertx.kafka.client.serialization.JsonObjectSerializer

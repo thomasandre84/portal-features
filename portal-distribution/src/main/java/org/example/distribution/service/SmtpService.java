@@ -12,7 +12,7 @@ import javax.inject.Inject;
  */
 @Slf4j
 @ApplicationScoped
-public class SmtpService {
+public final class SmtpService {
 
     @Inject
     Mailer mailer;

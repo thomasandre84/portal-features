@@ -17,3 +17,8 @@ Simple Portal Features implemented with examples, based on a microservice archit
 
 ### Testing
 * GreenMail 
+
+## Create EMail Test Users
+```
+ 
+```
