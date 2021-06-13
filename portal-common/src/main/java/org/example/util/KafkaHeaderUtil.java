@@ -1,7 +1,6 @@
 package org.example.util;
 
 import io.jaegertracing.internal.JaegerSpanContext;
-import io.opentelemetry.api.trace.SpanContext;
 import io.smallrye.reactive.messaging.kafka.IncomingKafkaRecordMetadata;
 import io.smallrye.reactive.messaging.kafka.OutgoingKafkaRecordMetadata;
 import lombok.extern.slf4j.Slf4j;

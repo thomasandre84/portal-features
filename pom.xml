@@ -15,9 +15,9 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
-    <quarkus.platform.version>2.0.0.Alpha3</quarkus.platform.version>
-    <surefire-plugin.version>2.22.1</surefire-plugin.version>
-    <fabric8.version>0.33.0</fabric8.version>
+    <quarkus.version>2.0.0.CR3</quarkus.version>
+    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <fabric8.version>0.35.0</fabric8.version>
     <jacoco.version>0.8.6</jacoco.version>
     <docker.image.prefix>dockerhub</docker.image.prefix>
     <sonar.projectKey>portal-features</sonar.projectKey>
@@ -30,7 +30,7 @@
       <dependency>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>${quarkus.platform.artifact-id}</artifactId>
-        <version>${quarkus.platform.version}</version>
+        <version>${quarkus.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -58,18 +58,7 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-config-yaml</artifactId>
     </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-jackson</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-mutiny</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-fault-tolerance</artifactId>
-    </dependency>
+
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-logging-json</artifactId>
@@ -91,33 +80,8 @@
       <artifactId>quarkus-opentelemetry</artifactId>
     </dependency>-->
     <dependency>
-    <groupId>io.quarkus</groupId>
-    <artifactId>quarkus-smallrye-opentracing</artifactId>
-  </dependency>
-    <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-reactive-messaging-kafka</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-agroal</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-jdbc-mysql</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-reactive-mysql-client</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-hibernate-orm-panache</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-liquibase</artifactId>
+      <artifactId>quarkus-smallrye-opentracing</artifactId>
     </dependency>
     <!-- Test -->
     <dependency>
@@ -135,13 +99,18 @@
       <artifactId>quarkus-jacoco</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jdbc-h2</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
-        <version>${quarkus.platform.version}</version>
+        <version>${quarkus.version}</version>
         <executions>
           <execution>
             <goals>
@@ -168,22 +137,6 @@
             <classpathDependencyExclude>org.jboss.slf4j:slf4j-jboss-logging</classpathDependencyExclude>
           </classpathDependencyExcludes>
         </configuration>
-        <executions>
-          <execution>
-            <id>integration-tests</id>
-            <phase>integration-test</phase>
-            <goals>
-              <goal>test</goal>
-            </goals>
-            <configuration>
-              <excludedGroups>!integration</excludedGroups>
-              <groups>integration</groups>
-              <systemPropertyVariables>
-                <jacoco-agent.destfile>${project.build.directory}/jacoco-it.exec</jacoco-agent.destfile>
-              </systemPropertyVariables>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
@@ -191,33 +144,13 @@
         <version>${jacoco.version}</version>
         <configuration>
           <excludes>
-            <exclude>**/enaums/**</exclude>
+            <exclude>**/enums/**</exclude>
             <exclude>**/dto/**</exclude>
             <exclude>**/model/**</exclude>
             <exclude>**/config/**</exclude>
             <exclude>**/repository/**</exclude>
           </excludes>
         </configuration>
-        <executions>
-          <execution>
-            <id>default-prepare-agent</id>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-            <configuration>
-              <exclClassLoaders>*QuarkusClassLoader</exclClassLoaders>
-            </configuration>
-          </execution>
-          <execution>
-            <id>default-prepare-agent-integration</id>
-            <goals>
-              <goal>prepare-agent-integration</goal>
-            </goals>
-            <configuration>
-              <exclClassLoaders>*QuarkusClassLoader</exclClassLoaders>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
