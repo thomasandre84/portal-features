@@ -6,4 +6,6 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <include file="/db/sql/quartz.sql"/>
+    <include file="/db/sql/emailTemplate.sql"/>
+    <include file="/db/sql/email.sql"/>
 </databaseChangeLog>

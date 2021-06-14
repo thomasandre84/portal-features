@@ -4,7 +4,8 @@ import io.quarkus.qute.Engine;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 import lombok.extern.slf4j.Slf4j;
-import org.example.distribution.repository.ActiveEMailTemplateRepository;
+import org.example.distribution.repository.ViewActiveEMailTemplateRepository;
+import org.example.model.ViewActiveEMailTemplate;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -19,7 +20,7 @@ public final class TemplateService {
     Engine engine;
 
     @Inject
-    ActiveEMailTemplateRepository activeEMailTemplateRepository;
+    ViewActiveEMailTemplateRepository viewActiveEMailTemplateRepository;
 
     public TemplateInstance getTemplateInstance(String name) {
         return null;
@@ -31,6 +32,9 @@ public final class TemplateService {
     }
 
     private String getTemplateContent(String name) {
-        return null;
+        log.debug("Receiving Template by name: {}", name);
+        var template = viewActiveEMailTemplateRepository
+                .find("name", name, ViewActiveEMailTemplate.class).firstResult();
+        return template.getContent();
     }
 }

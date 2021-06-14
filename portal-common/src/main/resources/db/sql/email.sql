@@ -2,7 +2,7 @@
 --changeset thomas:email
 CREATE TABLE EMailConfiguration(
 id BIGINT NOT NULL AUTO_INCREMENT,
-name VARCHAR(200) NOT NULL,
+`name` VARCHAR(200) NOT NULL,
 host VARCHAR(200) NOT NULL,
 port MEDIUMINT NOT NULL,
 email VARCHAR(255) NOT NULL,
